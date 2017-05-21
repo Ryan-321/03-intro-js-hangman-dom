@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hangman</title>
+    <link rel='stylesheet' type='text/css' href='assets/css/normalize.css' />
+    <link rel='stylesheet' type='text/css' href='assets/css/reset.css' />
+    <link rel='stylesheet' type='text/css' href='assets/css/style.css' />
+  </head>
+  <body>
+    <header>
+      <h1 class='Header--h1'>
+        Hang
+        <span>
+          <img src='assets/images/elmo.png' alt='Elmo' class="Header--img" />
+        </span>
+          Elmo
+        </h1>
+    </header>
+    <main>
+      <section class="clear">
+        <img src='assets/images/big_bird.png' alt='Big Bird' class='Big_Bird--img' />
+        <article class="Big_Bird--article">
+          <h2>Can you figure out the word before your guesses run out?</h2>
+          <h3>Hint: </h3>
+          <p id='Hint'></p>
+          <p id="answerArray"></p>
+        </article>
+      </section>
+      <section class="clear">
+        <article>
+          <input type="text" onKeyUp="keyWasPressed(event)" />
+          <p>Guesses: <span id="guessArray">none</span></p>
+        </article>
+        <img src='assets/images/letter_day.gif' alt="Cookie Monster"  class='Cookie--img'/>
+      </section>
+    </main>
+    <script src="assets/js/game.js"></script>
+  </body>
+</html>

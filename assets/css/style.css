@@ -1,0 +1,79 @@
+body {
+  background-color: lemonchiffon;
+}
+
+header {
+  text-align: center;
+}
+
+.Header--h1 {
+  line-height: 2em;
+  font-size: 7em;
+  display: inline-block;
+  font-family: fantasy, Roboto, sans-serif;
+}
+.Header--img {
+  width: 150px;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+section {
+  background-color: white;
+  padding: 2em 3em;
+  margin: 20px;
+}
+.Big_Bird--img,
+.Cookie--img {
+  height: 300px;
+  float: left;
+}
+
+.Cookie--img {
+  float: right;
+}
+
+.clear:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+article {
+  height: 300px;
+  display: inline-block;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin: 1em 0;
+  display: inline-block;
+}
+
+.Big_Bird--article {
+  font-family: fantasy, sans-serif;
+  width: 60%;
+  float: right;
+}
+
+.Big_Bird--article h2 {
+  font-size: 2em;
+  font-family: fantasy, sans-serif;
+  margin: .5em;
+  display: inline-block;
+}
+
+#Hint {
+  margin-left: 1.5em;
+  display: inline-block;
+}
+
+#answerArray {
+  font-size: 1.5em;
+  letter-spacing: .5em;
+  font-family: Roboto;
+}
