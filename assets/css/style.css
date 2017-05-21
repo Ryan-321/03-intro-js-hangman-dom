@@ -67,6 +67,20 @@ h3 {
   display: inline-block;
 }
 
+.Cookie--article {
+  width: 50%;
+  text-align: left;
+}
+
+.Cookie--article input {
+  font-size: 1.25em;
+}
+
+.Cookie--article p {
+  margin-top: 2em;
+  font-size: 1.25em;
+}
+
 #Hint {
   margin-left: 1.5em;
   display: inline-block;
@@ -75,5 +89,10 @@ h3 {
 #answerArray {
   font-size: 1.5em;
   letter-spacing: .5em;
+  font-family: Roboto;
+}
+
+#guessArray {
+  letter-spacing: .25em;
   font-family: Roboto;
 }

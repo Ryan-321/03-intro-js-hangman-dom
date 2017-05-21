@@ -2,15 +2,16 @@ var word = ['snuffy'][0].split('')
 var hint = ['He might do smack?']
 var answer = setString(word.length)
 var guessArray = []
+var guessesCount = 11
 
 document.getElementById('Hint').innerText = hint
-updateArrays()
+updateElements()
 
 //  onKeyUp event listener
 function keyWasPressed (e) {
   var letter = String.fromCharCode(e.keyCode).toLowerCase()
   findLetter(letter)
-  updateArrays()
+  updateElements()
 }
 
 // set array
@@ -23,9 +24,11 @@ function setString (length) {
 }
 
 // for placing array
-function updateArrays () {
+function updateElements () {
   document.getElementById('answerArray').innerText = answer.join('')
   document.getElementById('guessArray').innerText = guessArray
+  document.getElementById('guessCount').innerText = guessCount()
+  checkWinner()
 }
 
 // search word for matching letter
@@ -35,6 +38,25 @@ function findLetter (letter) {
       answer[i] = letter.toUpperCase()
     }
   }
-
   guessArray.push(letter.toUpperCase())
+}
+
+function guessCount () {
+  guessesCount -= 1
+  return guessesCount
+}
+
+function checkWinner () {
+  var str = document.getElementById('answerArray').innerText
+  if (guessesCount === 0) {
+    alert('You are out of guess, better luck next time sucka!!!')
+    location.reload()
+  } else if (!str.includes('_')) {
+    alert('You are the Winner!!!')
+    location.reload()
+  }
+}
+
+function setWordHint () {
+  // randomly choose a new word and Hint when page loads
 }
