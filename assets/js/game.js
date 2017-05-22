@@ -1,74 +1,72 @@
-// Globals
-var word = ['snuffy'][0].split('')
-var hint = ['He might do smack?']
-var answer = setString(word.length)
-var guessArray = []
-var guessesCount = 11
-
-// Calls
-document.getElementById('Hint').innerText = hint
-updateElements()
-
-//  Functions
-
-//  onKeyUp event listener
-function keyWasPressed (e) {
-  var letter = String.fromCharCode(e.keyCode).toLowerCase()
-  updateElements()
-  findLetter(letter)
-  document.getElementById('Guess--Input').value = ''
-}
-
-// set string
-function setString (length) {
-  var array = []
-  for (var i = 0; i < length; i++) {
-    array.push('_')
-  }
-  return array
-}
-
-// for placing array
-function updateElements () {
-  document.getElementById('answerArray').innerText = answer.join('')
-  document.getElementById('guessArray').innerText = guessArray
-  document.getElementById('guessCount').innerText = guessCount()
-  checkWinner()
-}
-
-// search word for matching letter
-function findLetter (letter) {
-  for (var i = 0; i < word.length; i++) {
-    if (word[i] === letter) {
-      answer[i] = letter.toUpperCase()
+// game object
+var game = {
+  words: [ 'snuffleupagus', 'countvoncount', 'abbycadabby' ],
+  word: '',
+  hints: [ 'He might do smack?', "He's got a night job", 'She can do wee bit of magic' ],
+  hint: '',
+  guessArray: [],
+  guessesCount: 11,
+  answer: '',
+  start: function () {
+    this.setWordHint()
+    this.answer = this.setString(this.word.length)
+    this.updateElements()
+  },
+  keyWasPressed: function (e) {
+    var letter = String.fromCharCode(e.keyCode).toLowerCase()
+    this.findLetter(letter)
+    this.updateElements()
+    document.getElementById('Guess--Input').value = ''
+    this.checkWinner()
+  },
+  setWordHint: function () {
+    var num = Math.floor((Math.random() * 3))
+    this.word = this.words[num]
+    this.hint = this.hints[num]
+  },
+  setString: function (length) {
+    var array = []
+    for (var i = 0; i < length; i++) {
+      array.push('_')
     }
+    return array
+  },
+  updateElements: function () {
+    document.getElementById('answerArray').innerText = this.answer.join('')
+    document.getElementById('guessArray').innerText = this.guessArray
+    document.getElementById('guessCount').innerText = this.guessCount()
+    document.getElementById('Hint').innerText = this.hint
+  },
+  findLetter: function (letter) {
+    for (var i = 0; i < this.word.length; i++) {
+      if (this.word[i] === letter) {
+        this.answer[i] = letter.toUpperCase()
+      }
+    }
+    this.guessArray.push(letter.toUpperCase())
+  },
+  guessCount: function () {
+    this.guessesCount -= 1
+    return this.guessesCount
+  },
+  checkWinner: function () {
+    var str = document.getElementById('answerArray').innerText
+    if (this.guessesCount === 0) {
+      alert('You are out of guess, better luck next time sucka!!!')
+      this.restart()
+    } else if (!str.includes('_')) {
+      alert('You are the Winner!!!')
+      this.restart()
+    }
+  },
+  restart: function () {
+    this.guessArray = []
+    this.guessesCount = 11
+    this.setWordHint()
+    this.answer = this.setString(this.word.length)
+    this.updateElements()
   }
-  guessArray.push(letter.toUpperCase())
 }
 
-function guessCount () {
-  guessesCount -= 1
-  return guessesCount
-}
-
-function checkWinner () {
-  var str = document.getElementById('answerArray').innerText
-  if (guessesCount === 0) {
-    alert('You are out of guess, better luck next time sucka!!!')
-    restart()
-  } else if (!str.includes('_')) {
-    alert('You are the Winner!!!')
-    restart()
-  }
-}
-
-function restart () {
-  answer = setString(word.length)
-  guessArray = []
-  guessesCount = 11
-  updateElements()
-}
-
-function setWordHint () {
-  // randomly choose a new word and Hint when page loads
-}
+// Call
+game.start()
