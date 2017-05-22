@@ -1,20 +1,25 @@
+// Globals
 var word = ['snuffy'][0].split('')
 var hint = ['He might do smack?']
 var answer = setString(word.length)
 var guessArray = []
 var guessesCount = 11
 
+// Calls
 document.getElementById('Hint').innerText = hint
 updateElements()
+
+//  Functions
 
 //  onKeyUp event listener
 function keyWasPressed (e) {
   var letter = String.fromCharCode(e.keyCode).toLowerCase()
-  findLetter(letter)
   updateElements()
+  findLetter(letter)
+  document.getElementById('Guess--Input').value = ''
 }
 
-// set array
+// set string
 function setString (length) {
   var array = []
   for (var i = 0; i < length; i++) {
@@ -50,11 +55,18 @@ function checkWinner () {
   var str = document.getElementById('answerArray').innerText
   if (guessesCount === 0) {
     alert('You are out of guess, better luck next time sucka!!!')
-    location.reload()
+    restart()
   } else if (!str.includes('_')) {
     alert('You are the Winner!!!')
-    location.reload()
+    restart()
   }
+}
+
+function restart () {
+  answer = setString(word.length)
+  guessArray = []
+  guessesCount = 11
+  updateElements()
 }
 
 function setWordHint () {
