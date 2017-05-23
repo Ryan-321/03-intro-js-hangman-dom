@@ -8,13 +8,13 @@ header {
 
 .Header--h1 {
   line-height: 2em;
-  font-size: 7em;
+  font-size: 5em;
   display: inline-block;
   font-family: fantasy, Roboto, sans-serif;
 }
 
 .Header--img {
-  width: 150px;
+  width: 120px;
 }
 
 main {
@@ -24,7 +24,7 @@ main {
 
 section {
   background-color: white;
-  padding: 2em 3em;
+  padding: 1em 2em;
   margin: 20px;
 }
 .Big_Bird--img,
@@ -69,16 +69,17 @@ h3 {
 }
 
 .Cookie--article {
-  width: 50%;
+  width: 35%;
   text-align: left;
 }
 
 .Cookie--article input {
+  margin: 10px 0;
   font-size: 1.25em;
 }
 
 .Cookie--article p {
-  margin-top: 2em;
+  margin-top: 1.5em;
   font-size: 1.25em;
 }
 

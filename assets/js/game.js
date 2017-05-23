@@ -2,7 +2,7 @@
 var game = {
   words: [ 'snuffleupagus', 'countvoncount', 'abbycadabby' ],
   word: '',
-  hints: [ 'He might do smack?', "He's got a night job", 'She can do wee bit of magic' ],
+  hints: [ 'He might do smack?', "He's got a night job", 'She can do a wee bit of magic' ],
   hint: '',
   guessArray: [],
   guessesCount: 11,
