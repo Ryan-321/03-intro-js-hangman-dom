@@ -5,7 +5,7 @@ var game = {
   hints: [ 'He might do smack?', "He's got a night job", 'She can do a wee bit of magic' ],
   hint: '',
   guessArray: [],
-  guessesCount: 11,
+  guessesCount: 5,
   answer: '',
   start: function () {
     this.setWordHint()
@@ -34,15 +34,18 @@ var game = {
   updateElements: function () {
     document.getElementById('answerArray').innerText = this.answer.join('')
     document.getElementById('guessArray').innerText = this.guessArray
-    document.getElementById('guessCount').innerText = this.guessCount()
+    document.getElementById('guessCount').innerText = this.guessesCount
     document.getElementById('Hint').innerText = this.hint
   },
   findLetter: function (letter) {
+    var letterNotFound = true
     for (var i = 0; i < this.word.length; i++) {
       if (this.word[i] === letter) {
+        letterNotFound = false
         this.answer[i] = letter.toUpperCase()
       }
     }
+    if (letterNotFound) { this.guessCount() }
     this.guessArray.push(letter.toUpperCase())
   },
   guessCount: function () {
